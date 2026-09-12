@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Environment / secrets
+.env
+.env.*
+
+# Data
+# Raw datasets can be very large. Keep them outside Git unless explicitly needed.
+data/raw/*
+!data/raw/.gitkeep
+
+# Outputs
+outputs/
+artifacts/
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
