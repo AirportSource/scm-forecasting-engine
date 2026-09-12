@@ -10,19 +10,55 @@ Ce fichier suit les notions importantes, pas la memorisation de chaque fonction 
 - 3 = je peux l'utiliser seul dans le projet
 - 4 = je peux la transferer, diagnostiquer des erreurs et l'expliquer clairement
 
+## Regle d'utilisation
+
+- Ne pas essayer de travailler toutes les lignes en meme temps.
+- Une notion devient active quand elle appartient au jalon actuel de la roadmap ou qu'elle devient necessaire pour debloquer le projet.
+- Une preuve doit etre concrete : exercice refait sans notes, application M5, test, analyse interpretee, transfert a un nouveau cas, etc.
+- Les revisions espacees restent souples : la reutilisation naturelle dans le projet compte comme revision.
+
 ## Statistics
+
+### Descriptive statistics
 
 | Notion | Niveau | Preuve | Derniere pratique | Revoir |
 |---|---:|---|---|---|
+| Population / echantillon | 0 |  |  |  |
+| Observation / variable / granularite | 0 |  |  |  |
+| Types de variables | 0 |  |  |  |
 | Moyenne / mediane | 0 |  |  |  |
 | Variance / ecart-type | 0 |  |  |  |
-| Quantiles / IQR | 0 |  |  |  |
-| Distribution empirique / CDF | 0 |  |  |  |
-| Probabilite conditionnelle | 0 |  |  |  |
-| Esperance / variance d'une VA | 0 |  |  |  |
-| Echantillonnage / estimation | 0 |  |  |  |
-| Intervalles de confiance | 0 |  |  |  |
+| Quantiles / IQR / MAD | 0 |  |  |  |
+| Distribution empirique | 0 |  |  |  |
+| Outliers / valeurs atypiques | 0 |  |  |  |
 | Correlation / covariance | 0 |  |  |  |
+
+### Probability
+
+| Notion | Niveau | Preuve | Derniere pratique | Revoir |
+|---|---:|---|---|---|
+| Evenements / probabilites | 0 |  |  |  |
+| Probabilite conditionnelle | 0 |  |  |  |
+| Independance | 0 |  |  |  |
+| Variable aleatoire | 0 |  |  |  |
+| PMF / PDF / CDF | 0 |  |  |  |
+| Esperance / variance d'une variable aleatoire | 0 |  |  |  |
+| Lois normale / binomiale / Poisson | 0 |  |  |  |
+| Loi des grands nombres (LLN) | 0 |  |  |  |
+| Theoreme central limite (CLT) | 0 |  |  |  |
+
+### Statistical inference
+
+| Notion | Niveau | Preuve | Derniere pratique | Revoir |
+|---|---:|---|---|---|
+| Parametre / statistique / estimateur | 0 |  |  |  |
+| Echantillonnage | 0 |  |  |  |
+| Sampling distribution | 0 |  |  |  |
+| Biais d'un estimateur | 0 |  |  |  |
+| Standard error | 0 |  |  |  |
+| Intervalle de confiance | 0 |  |  |  |
+| Test d'hypothese / p-value | 0 |  |  |  |
+| Erreurs de type I / II | 0 |  |  |  |
 | Regression | 0 |  |  |  |
 
 ## Time Series
@@ -66,3 +102,18 @@ Ce fichier suit les notions importantes, pas la memorisation de chaque fonction 
 | Experiment tracking | 0 |  |  |  |
 | Monitoring | 0 |  |  |  |
 | Profiling temps / memoire | 0 |  |  |  |
+
+## Competences actives maintenant
+
+Pour le jalon actuel, les priorites sont volontairement limitees a :
+
+- Population / echantillon
+- Observation / variable / granularite
+- Types de variables
+- Moyenne / mediane
+- Variance / ecart-type
+- Quantiles / IQR / MAD
+- Distribution empirique
+- Premiers controles et interpretations sur M5
+
+Les autres lignes restent en attente jusqu'a ce qu'elles deviennent pertinentes dans la roadmap ou necessaires pour debloquer le projet.
