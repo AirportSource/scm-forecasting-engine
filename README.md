@@ -1,38 +1,30 @@
 # SCM Forecasting Engine
 
-Projet fil rouge de self-study en data science appliquee au forecasting pour le Supply Chain Management.
+Projet fil rouge de self-study en data science appliquée au forecasting pour le Supply Chain Management.
 
 ## Objectif
 
-Construire progressivement un moteur reutilisable de prevision de la demande, des ventes, de la consommation ou d'ETA, avec :
+Construire progressivement un moteur réutilisable de prévision de la demande, des ventes, de la consommation ou d'ETA, avec validation temporelle sans leakage, modèles statistiques et ML, prévisions probabilistes, décisions SCM, pipeline reproductible et montée en charge mesurée.
 
-- preparation et validation des donnees ;
-- EDA et statistiques ;
-- backtesting temporel sans leakage ;
-- modeles statistiques et machine learning ;
-- previsions probabilistes ;
-- benchmarking automatise ;
-- pipeline reproductible ;
-- deploiement, monitoring et MLOps ;
-- passage a l'echelle ;
-- extensions ETA et agents IA.
+## Documents de pilotage — structure figée
+
+- [ROADMAP.md](ROADMAP.md) — direction, rôle cible et budgets globaux ;
+- [LEARNING_PATH.md](LEARNING_PATH.md) — ordre logique des blocs ;
+- [SKILLS.md](SKILLS.md) — base de données des compétences ;
+- [RESOURCES.md](RESOURCES.md) — ressources déjà choisies ;
+- [docs/TARGET_SYSTEM.md](docs/TARGET_SYSTEM.md) — versions V0 à V5 du moteur ;
+- [docs/CHECKPOINTS.md](docs/CHECKPOINTS.md) — épreuves objectives de fin de bloc ;
+- [docs/TIME_BUDGET.md](docs/TIME_BUDGET.md) — budget d'heures et règles de dérive ;
+- [docs/WORKFLOW.md](docs/WORKFLOW.md) — Learning / Practice / Research loops ;
+- [docs/CADENCE.md](docs/CADENCE.md) — rythme jour / semaine / mois ;
+- [LEARNING_LOG.md](LEARNING_LOG.md) — preuves, fragilités et rappels.
 
 ## Projet principal
 
-Le dataset M5 sert de premier terrain d'application. L'objectif n'est pas seulement de reproduire la competition M5, mais de construire une architecture progressivement reutilisable sur d'autres contextes SCM.
+M5 est le premier terrain d'application. L'objectif n'est pas de reproduire la compétition, mais de construire un socle progressivement transférable à d'autres contextes SCM.
 
-## Roadmap
+## Règle de travail
 
-Voir [ROADMAP.md](ROADMAP.md).
+Une tâche n'est terminée que si elle produit une preuve : résultat reproductible, vérification technique et compréhension suffisante pour expliquer ce qui a été fait.
 
-## Suivi des competences
-
-Voir [SKILLS.md](SKILLS.md).
-
-## Journal d'apprentissage
-
-Voir [LEARNING_LOG.md](LEARNING_LOG.md).
-
-## Regle de travail
-
-Une tache n'est consideree terminee que si elle produit une preuve : resultat reproductible, verification technique et comprehension suffisante pour expliquer ce qui a ete fait.
+La couche méta est désormais **gelée**. La priorité est le code, les exercices, les analyses et les preuves.
