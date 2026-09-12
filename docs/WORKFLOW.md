@@ -1,14 +1,15 @@
 # Learning Flow, Practice Loop & Research Loop
 
-Ce document sépare volontairement **trois mécanismes différents** :
+Ce document sépare volontairement **trois mécanismes différents**, mais connectés :
 
 1. **Boucle d'apprentissage** : construire et consolider une compétence théorique / technique.
-2. **Boucle pratique projet** : utiliser les compétences pour faire avancer le moteur de forecasting sur M5.
+2. **Boucle pratique projet** : faire avancer le moteur de forecasting sur M5, en s'appuyant aussi sur les pratiques et processus déjà utilisés par des personnes expérimentées.
 3. **Boucle littérature / reverse engineering** : s'inspirer, comparer, challenger et découvrir de meilleures approches.
 
 Le but est d'éviter de confondre :
 
 - *j'ai lu / compris une notion* ;
+- *j'ai vu quelqu'un d'autre le faire* ;
 - *j'ai réussi à l'appliquer une fois* ;
 - *je sais réellement la reproduire, l'interpréter et la transférer*.
 
@@ -98,52 +99,120 @@ Cette boucle concerne **la construction réelle du projet M5**.
 
 Elle ne décide pas de tout ce que j'apprends : elle consomme les connaissances de la Learning Loop et révèle de nouveaux besoins.
 
+Le **reverse engineering fait partie de cette boucle pratique** : avant de construire une solution importante, je regarde comment le problème a déjà été abordé par des personnes expérimentées, afin d'identifier les architectures, contrôles, patterns, pièges et processus utiles. Le but n'est pas de copier leur code, mais de ne pas construire dans le vide.
+
 ```text
-                   GITHUB PROJECT
-                        |
-                 prochaine issue
-                        v
-                 J'ESSAIE DE FAIRE
-                        |
-                        v
-                CODE / ANALYSE M5
-                        |
-                        v
-               TESTS TECHNIQUES
+                    GITHUB PROJECT
+                         |
+                  prochaine issue
+                         v
+                    CADRER LE BESOIN
+          objectif / entrée / sortie / preuve
+                         |
+                         v
+              PREMIÈRE IDÉE PERSONNELLE
+          comment je pense m'y prendre ?
+                         |
+                         v
+             REVERSE ENGINEERING CIBLÉ
+       repos / notebooks / docs / solutions pro
+                         |
+                         v
+                 EXTRAIRE LES PATTERNS
+      architecture / process / contrôles / pièges
+                         |
+                         v
+                CHOISIR CE QUE JE TESTE
+        garder / adapter / rejeter / comparer
+                         |
+                         v
+                 CODE / ANALYSE M5
+                         |
+                         v
+                TESTS TECHNIQUES
        types / dimensions / joins / erreurs
-                        |
-                        v
-                 SANITY CHECKS
+                         |
+                         v
+                  SANITY CHECKS
        calcul manuel / cas jouet / baseline
-                        |
-                        v
-                 INTERPRÉTER
+                         |
+                         v
+                   INTERPRÉTER
         que signifie réellement le résultat ?
-                        |
-                        v
-             REPRODUIRE / TRANSFÉRER
+                         |
+                         v
+              REPRODUIRE / TRANSFÉRER
           autre série / autre période / cas
-                        |
-                        v
-                 +------+------+ 
-                 |             |
-              ÉCHEC            OK
-                 |             |
-                 v             v
-            DIAGNOSTIC      COMMIT
-                 |             |
-       +---------+---------+   v
-       |                   | PREUVE ISSUE
- problème technique   problème conceptuel |
-       |                   |               v
-       v                   v          issue -> DONE
- debug / tests       BOUCLE             |
- docs / refactor   D'APPRENTISSAGE      v
-       |                   |         LEARNING_LOG.md
-       +---------+---------+
-                 |
-                 +-------> retour au projet M5
+                         |
+                         v
+                  +------+------+ 
+                  |             |
+               ÉCHEC            OK
+                  |             |
+                  v             v
+             DIAGNOSTIC      COMPARER
+                  |         aux approches externes
+       +----------+---------+   |
+       |                    |   v
+ problème technique   problème conceptuel
+       |                    |   |
+       v                    v   |
+ debug / tests        BOUCLE    |
+ docs / refactor    D'APPRENTISSAGE
+       |                    |   |
+       +----------+---------+---+
+                  |
+                  v
+          CORRIGER / AMÉLIORER
+                  |
+           +------+------+
+           |             |
+     preuve insuffisante  preuve suffisante
+           |             |
+           v             v
+     retour au projet   COMMIT
+                         |
+                         v
+                    PREUVE ISSUE
+                         |
+                         v
+                   issue -> DONE
+                         |
+                         v
+                  LEARNING_LOG.md
 ```
+
+## Pourquoi le reverse engineering est dans la boucle projet
+
+Pour une issue importante, les questions à poser avant de coder sont :
+
+- Comment des practitioners expérimentés structurent-ils ce type de problème ?
+- Quels contrôles font-ils systématiquement ?
+- Quelles erreurs essaient-ils d'éviter ?
+- Quelle architecture de données ou de code revient souvent ?
+- Quelles baselines utilisent-ils avant les modèles complexes ?
+- Comment organisent-ils le backtesting, les features, les métriques et les artefacts ?
+- Qu'est-ce qui semble spécifique à leur contexte et ne doit pas être copié tel quel ?
+
+Le reverse engineering peut concerner :
+
+- solutions publiques M5 / Kaggle ;
+- repositories Nixtla, statsforecast, mlforecast ou autres projets forecasting ;
+- code de projets industriels open source ;
+- articles techniques et engineering blogs ;
+- papers avec implémentation ;
+- documentation officielle de librairies.
+
+### Règle anti-copie
+
+Avant de reprendre une idée externe, je dois pouvoir écrire :
+
+1. **quel problème elle résout** ;
+2. **pourquoi elle pourrait être utile ici** ;
+3. **quelles hypothèses elle fait** ;
+4. **comment je vais vérifier qu'elle fonctionne sur M5**.
+
+Une idée externe devient donc une **hypothèse à tester**, pas une vérité à reproduire.
 
 ## Une issue n'est pas `Done` si...
 
@@ -161,6 +230,7 @@ Elle ne décide pas de tout ce que j'apprends : elle consomme les connaissances 
 - le code est raisonnablement reproductible ;
 - les contrôles essentiels passent ;
 - je peux expliquer le choix réalisé ;
+- je sais en quoi mon approche ressemble ou diffère des approches étudiées ;
 - les limites sont identifiées ;
 - la preuve demandée dans l'issue est satisfaite.
 
@@ -168,7 +238,7 @@ Elle ne décide pas de tout ce que j'apprends : elle consomme les connaissances 
 
 # 3. Les deux boucles ensemble
 
-La **Learning Loop** et la **Practice Loop** tournent en parallèle et se nourrissent mutuellement.
+La **Learning Loop** et la **Practice Loop** tournent en parallèle et se nourrissent mutuellement. Le reverse engineering est une passerelle importante entre connaissance externe et construction personnelle.
 
 ```text
                          ROADMAP.md
@@ -187,8 +257,11 @@ La **Learning Loop** et la **Practice Loop** tournent en parallèle et se nourri
                  v                         v
         BOUCLE APPRENTISSAGE       BOUCLE PRATIQUE M5
                  |                         |
-     théorie -> exercices           issue -> code / analyse
-     -> rappel -> transfert         -> tests -> interprétation
+     théorie -> exercices          cadrage de l'issue
+     -> rappel -> transfert        -> idée personnelle
+                 |                 -> reverse engineering
+                 |                 -> code / analyse
+                 |                 -> tests / interprétation
                  |                         |
                  +------------+------------+
                               |
@@ -196,7 +269,7 @@ La **Learning Loop** et la **Practice Loop** tournent en parallèle et se nourri
                               |
                               v
                     VALIDATION CROISÉE
-             comprendre + faire + reproduire
+           comprendre + faire + comparer + reproduire
                               |
                   +-----------+-----------+
                   |                       |
@@ -226,11 +299,19 @@ J'APPRENDS
    ↓
 JE M'EXERCE
    ↓
+JE CADRE UNE TÂCHE PROJET
+   ↓
+JE REGARDE COMMENT LES BONS PRACTITIONERS L'ABORDENT
+   ↓
+JE CHOISIS CE QUE JE VEUX TESTER
+   ↓
 J'APPLIQUE SUR M5
    ↓
 JE TESTE ET J'INTERPRÈTE
    ↓
 JE REPRODUIS AILLEURS
+   ↓
+JE COMPARE / JE CHALLENGE MON APPROCHE
    ↓
 JE DÉCOUVRE CE QUI EST ENCORE FRAGILE
    ↓
@@ -239,13 +320,13 @@ JE RETOURNE APPRENDRE OU JE CORRIGE LE PROJET
 JE RE-APPLIQUE
 ```
 
-Il n'y a donc **pas une seule grande boucle**. Il y a deux boucles autonomes reliées par des passerelles.
+Il n'y a donc **pas une seule grande boucle**. Il y a deux boucles autonomes reliées par des passerelles, avec le reverse engineering comme source régulière d'inspiration et de contrôle.
 
 ---
 
 # 4. Boucle littérature / reverse engineering
 
-Cette boucle reste transversale aux deux précédentes.
+Cette boucle reste transversale aux deux précédentes, mais elle est aussi **explicitement intégrée dans la Practice Loop**.
 
 Elle permet de ne pas apprendre ou construire dans le vide.
 
@@ -280,6 +361,28 @@ Elle permet de ne pas apprendre ou construire dans le vide.
                          garder / rejeter / adapter
 ```
 
+## Deux usages du reverse engineering
+
+### A. Inspiration avant implémentation
+
+Je regarde des approches existantes pour comprendre :
+
+- comment le problème est découpé ;
+- quelles étapes de pipeline reviennent souvent ;
+- quels contrôles sont considérés comme standards ;
+- quelles baselines et métriques sont utilisées ;
+- quelles erreurs ont déjà été rencontrées.
+
+### B. Comparaison après implémentation
+
+Une fois mon approche fonctionnelle, je reviens aux solutions externes pour demander :
+
+- qu'est-ce que j'ai oublié ?
+- qu'est-ce que j'ai fait différemment ?
+- leur complexité apporte-t-elle une valeur mesurable ?
+- mon implémentation est-elle plus fragile ?
+- y a-t-il une amélioration qui mérite une nouvelle expérience ?
+
 ## Règle de lecture
 
 La revue doit être **ciblée** et produire quelque chose.
@@ -292,8 +395,6 @@ Une lecture / un repo est utile s'il mène à au moins un de ces résultats :
 - une erreur détectée ;
 - une meilleure façon de structurer le code ;
 - une décision argumentée de ne pas utiliser l'approche observée.
-
-Pour le reverse engineering de solutions M5 : essayer d'abord de comprendre suffisamment le problème et d'avoir une baseline personnelle. Cela donne un point de comparaison et évite le copier-coller aveugle.
 
 ---
 
@@ -315,8 +416,10 @@ Pour le reverse engineering de solutions M5 : essayer d'abord de comprendre suff
                  v                                   v
        BOUCLE APPRENTISSAGE                 BOUCLE PRATIQUE
        théorie / exercices                  projet M5 / issues
-       rappel / reproduction                tests / interprétation
-       transfert                            reproduction
+       rappel / reproduction                idée personnelle
+       transfert                            reverse engineering
+                 |                          implémentation / tests
+                 |                          interprétation / transfert
                  |                                   |
                  +-----------------+-----------------+
                                    |
@@ -340,7 +443,8 @@ Pour le reverse engineering de solutions M5 : essayer d'abord de comprendre suff
 
          REVUE LITTÉRATURE / REPOS PUBLICS
          <-------------------------------->
-          nourrit et challenge les deux boucles
+          inspire, alimente et challenge la pratique
+          + consolide la compréhension théorique
 ```
 
 ---
@@ -373,6 +477,8 @@ plan apprentissage      issues GitHub
    v                         v
 Learning Loop           Practice Loop
    |                         |
+   |                  reverse engineering ciblé
+   |                         |
    +------------+------------+
                 |
                 v
@@ -382,12 +488,13 @@ Learning Loop           Practice Loop
      continuer / consolider / avancer
 ```
 
-Le planning hebdomadaire doit donc contenir **les deux types de travail** :
+Le planning hebdomadaire doit donc contenir **trois types de travail** :
 
-- temps d'apprentissage structuré ;
-- temps de projet / production.
+- apprentissage structuré ;
+- projet / production ;
+- lecture ciblée / reverse engineering pour s'inspirer et challenger les choix.
 
-La cible générale reste environ **30 % apprentissage / 70 % pratique**, sans obligation de respecter ce ratio exactement chaque jour.
+La cible générale reste environ **30 % apprentissage / 70 % pratique**, le reverse engineering faisant partie de la pratique lorsqu'il sert directement une issue ou une décision de conception.
 
 ---
 
@@ -401,7 +508,9 @@ Avant de monter une skill ou de fermer une issue, se demander :
 4. Est-ce que mon interprétation est compatible avec la théorie ?
 5. Puis-je reproduire l'idée sur une autre série ou un autre exemple ?
 6. Est-ce que j'ai identifié les limites de l'approche ?
-7. Si j'ai repris une idée externe, est-ce que je comprends pourquoi elle fonctionne ici ?
+7. Ai-je regardé comment le même problème est traité dans des références ou repos sérieux lorsque cela est pertinent ?
+8. Si j'ai repris une idée externe, est-ce que je comprends pourquoi elle fonctionne ici ?
+9. Ai-je testé cette idée plutôt que de supposer qu'elle est meilleure ?
 
 Si la réponse importante est non, la boucle continue.
 
@@ -417,7 +526,7 @@ Si la réponse importante est non, la boucle continue.
 
 La **Learning Loop** construit la compréhension.
 
-La **Practice Loop** construit le système réel.
+La **Practice Loop** construit le système réel et intègre le reverse engineering comme étape normale d'inspiration, de comparaison et de contrôle.
 
 La **Research Loop** apporte les idées externes et challenge les choix.
 
